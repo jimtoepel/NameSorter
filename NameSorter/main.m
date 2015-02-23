@@ -42,18 +42,21 @@ int main(int argc, const char * argv[]) {
         
         // Enumerate through the names array one at a time and ask if the lowercased name is a member of the words pile. (not interested in upper case)
         
-        unsigned int total = 0;
-        
-        for (NSString *n in names) {
-                if ([words containsObject:[n lowercaseString]])
-                    NSLog(@"%@", n);
-            total ++;
+        NSUInteger total = 0;
+             for (NSString *n in names) {
+                 
+                 // check if n occurs in words
+                 
+                 if ([words containsObject:n.lowercaseString]) {
+                     NSLog(@"%@", n);
+                     total ++;
+                 }
         }
         
         
         NSLog(@"There are %lu words.\n", wordsCount);
         NSLog(@"There are %lu names.\n", namesCount);
-        NSLog(@"There were %d matched, total.\n", total);
+        NSLog(@"There were %lu matched, total.\n", total);
     }
     return 0;
 }
